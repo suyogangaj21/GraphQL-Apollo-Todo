@@ -1,0 +1,23 @@
+const todoSchema = `#graphql
+type Todo {
+    id: ID!
+    todo: String!
+    completed: Boolean!
+    createdAt: String!
+}
+
+type Query {
+  todos: [Todo]  
+  
+}
+
+type ResponseType {
+  message: String!
+  }
+type Mutation{
+  createTodo(todo: String!): Todo!
+  updateTodo(id: ID!, completed: Boolean!): Todo
+  deleteTodo(id: ID!): ResponseType!
+}
+`;
+export default todoSchema;
