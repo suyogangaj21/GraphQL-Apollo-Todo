@@ -1,8 +1,10 @@
+scalar DateTime
+
 type Todo {
-  id: ID!
+  id: Int!
   todo: String!
   completed: Boolean!
-  createdAt: String!
+  createdAt: DateTime!
 }
 
 type Query {
@@ -14,6 +16,6 @@ type ResponseType {
 }
 type Mutation {
   createTodo(todo: String!): Todo!
-  updateTodo(id: ID!, completed: Boolean!): Todo
-  deleteTodo(id: ID!): ResponseType!
+  updateTodo(id: Int!, completed: Boolean!): Todo
+  deleteTodo(id: Int!): ResponseType!
 }

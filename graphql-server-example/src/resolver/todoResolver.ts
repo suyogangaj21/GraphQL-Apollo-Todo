@@ -1,10 +1,9 @@
 import prisma from "../config/database.js";
-
-type Context = {
+import { Resolvers } from "../generated/graphql.js";
+export type Context = {
   token: string | null;
   // user?: { userId: string } | null;
 };
-
 function requireAuth(ctx: Context) {
   if (!ctx.token) {
     // Or check ctx.user if you verify JWT and attach a user
@@ -12,7 +11,7 @@ function requireAuth(ctx: Context) {
   }
 }
 
-const todoResolver = {
+const todoResolver: Resolvers<Context> = {
   Query: {
     todos: async (_parent: any, _args: any, _ctx: Context) => {
       return prisma.todo.findMany({
